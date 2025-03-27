@@ -1,0 +1,90 @@
+/* General Styles */
+.founder-wrapper {
+  text-align: center;
+  padding: 20px;
+}
+
+.founder-heading {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  font-family: "Georgia", serif;
+  background: linear-gradient(45deg, rgb(255, 128, 0), black);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.founder-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.founder-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  gap: 40px;
+}
+
+.founder-item.left {
+  flex-direction: row;
+}
+
+.founder-item.right {
+  flex-direction: row-reverse;
+}
+
+.image-container {
+  flex: 1;
+}
+
+.founder-image {
+  width: 100%;
+  max-width: 400px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.info-container {
+  flex: 1;
+  padding: 20px; /* Add padding */
+  border-radius: 10px; /* Add border radius */
+  text-align: left; /* Align text to the left */
+}
+
+.founder-name {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.founder-info {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .founder-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .founder-item.left,
+  .founder-item.right {
+    flex-direction: column;
+  }
+
+  .info-container {
+    text-align: center; /* Center text on smaller screens */
+  }
+
+  .founder-image {
+    max-width: 100%;
+  }
+}

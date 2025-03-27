@@ -1,0 +1,116 @@
+/* NewComponent.css */
+.new-component-container {
+    position: relative;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center content horizontally and vertically */
+    color: white;
+    text-align: center; /* Center text */
+}
+
+.new-component-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../Assests/parallax-full-width.webp'); /* Add your image path */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax effect */
+    z-index: -1; /* Ensure the background is behind everything */
+    overflow: hidden;
+}
+
+.new-component-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Add a dark overlay over the background image */
+    z-index: -1; /* Ensure it sits above the background image */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Thin black layer */
+    z-index: 0; /* Place the overlay above the background but below the content */
+}
+
+.new-component-content {
+    position: relative;
+    z-index: 1; /* Place the content above the overlay */
+    max-width: 800px; /* Adjust max-width for better readability */
+    padding: 20px;
+}
+
+.new-component-content h1 {
+    font-size: 3.0rem; /* Larger font size for the main heading */
+    margin-bottom: 10px;
+    font-family: 'Spicy Rice', cursive; /* Use Spicy Rice font for the heading */
+    line-height: 1.2; /* Adjust line height for better spacing */
+    font-weight: bold; /* Bold text */
+    color: white; /* White text */
+}
+
+.new-component-content h2 {
+    font-size: 4.5rem; /* Slightly larger font size for the subheading */
+    margin-bottom: 10px;
+    font-family: 'Arial', sans-serif;
+    color: #e67e22; /* Orange color for the subheading */
+    font-weight: bold; /* Bold text */
+}
+
+.new-component-content h3 {
+    font-size: 2rem; /* Larger font size for the third heading */
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+    font-weight:100; /* Bold text */
+    color:#d35400; /* White text */
+    line-height: 1.5;
+    letter-spacing: 10px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center; /* Center buttons */
+    gap: 20px;
+}
+
+.buttons button {
+    padding: 12px 24px; /* Slightly larger padding for buttons */
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold; /* Bold text */
+}
+
+.buttons .shop-now {
+    background-color: #e67e22; /* Orange color */
+    color: white;
+}
+
+.buttons .view-more {
+    background-color: transparent;
+    border: 2px solid #e67e22; /* Orange border */
+    color: #e67e22;
+}
+
+.buttons .shop-now:hover {
+    background-color: #d35400; /* Darker orange on hover */
+}
+
+.buttons .view-more:hover {
+    background-color: #e67e22; /* Orange background on hover */
+    color: white;
+}

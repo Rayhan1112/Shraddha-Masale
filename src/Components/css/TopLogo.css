@@ -1,0 +1,23 @@
+.top-logo {
+    display: flex;
+    height: auto; /* Full viewport height */
+    position: absolute;
+}
+
+.top-logo img {
+    width: 150px; /* Adjust size as needed */
+    height: auto;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .top-logo img {
+        width: 120px; /* Smaller size for tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .top-logo img {
+        width: 100px; /* Smaller size for mobile */
+    }
+}

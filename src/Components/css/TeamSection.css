@@ -1,0 +1,92 @@
+/* TeamSection.css */
+.team-section {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Heading */
+  .team-heading {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: bold;
+  }
+  
+  /* Make all cards in a single row */
+  .team-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    max-width: 100%;
+    padding: 0 10px;
+    flex-wrap: nowrap; /* Prevents wrapping */
+  }
+  
+  /* Ensures all team cards adjust dynamically */
+  .team-card {
+    flex: 1; /* Makes cards take equal space */
+    min-width: 200px; /* Prevents them from getting too small */
+    max-width: 250px; /* Limits max size */
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Hover Effect */
+  .team-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Team Member Image */
+  .team-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+  }
+  
+  /* Team Member Info */
+  .team-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 5px;
+  }
+  
+  .team-role {
+    font-size: 1rem;
+    color: #777;
+  }
+  
+  /* Mobile Responsive */
+  @media (max-width: 1024px) {
+    .team-grid {
+      justify-content: center; /* Centers cards on smaller screens */
+    }
+    .team-card {
+      max-width: 220px; /* Reduces card width for tablets */
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .team-grid {
+      flex-wrap: wrap; /* Allows wrapping for small screens */
+    }
+    .team-card {
+      flex: 1 1 100%; /* Makes each card take full width */
+      max-width: 100%;
+    }
+    .team-name {
+      font-size: 1.3rem;
+    }
+    .team-role {
+      font-size: 0.9rem;
+    }
+  }
+  

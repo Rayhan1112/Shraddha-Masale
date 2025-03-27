@@ -1,0 +1,131 @@
+/* Footer Styling */
+.footer {
+    background-color: #000;
+    color: #fff;
+    padding: 3% 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Footer Container */
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 90%;
+    margin: auto;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Logo Section */
+.footer-logo-section {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+}
+
+.footer-logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* Footer Sections (Quick Links, About, Get in Touch) */
+.footer-section {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+}
+
+/* About Us Section (Larger Space) */
+.about-section {
+    flex: 2;
+    text-align: center;
+    max-width: 400px;
+}
+
+/* Titles */
+h3 {
+    color: #fbbf24;
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    margin-bottom: 15px;
+}
+
+/* Lists */
+ul {
+    list-style: none;
+    padding: 0;
+
+}
+
+ul li {
+    margin: 8px 0;
+    cursor: pointer;
+    font-size: clamp(0.9rem, 1.8vw, 1rem);
+    margin-left: -5vh;
+}
+
+/* Hover effect for links */
+.products li:hover,
+.links li:hover {
+    color: rgb(158, 158, 240);
+}
+
+/* Social Icons */
+.social-icons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.social-icons i {
+    font-size: 1.3rem;
+    color: #fff;
+    margin-right: 15px;
+    transition: color 0.3s ease-in-out;
+}
+
+.social-icons i:hover {
+    color: #fbbf24;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    padding: 15px 0;
+    border-top: 1px solid #444;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+.footer-bottom strong {
+    color: #fbbf24;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        max-width: 95%;
+    }
+
+    .footer-section,
+    .footer-logo-section,
+    .about-section {
+        min-width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .footer-logo {
+        width: 120px;
+        margin: 0 auto;
+        display: block;
+    }
+}

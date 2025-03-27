@@ -1,0 +1,103 @@
+/* ImageGrid.css */
+.image-grid-container {
+    max-width: 1200px;
+    margin: 10vh auto;
+    padding: 20px;
+  }
+  
+  .image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: start;
+  }
+  
+  .long-image-container {
+    width: 40%;
+    height: 800px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .long-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease, filter 0.4s ease;
+  }
+  
+  .long-image:hover {
+    transform: scale(1.1);
+    filter: brightness(0.7);
+  }
+  
+  .column-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+    width: 40%;
+  }
+  
+  .sub-image-container {
+    position: relative;
+    width: 100%;
+    height: 390px;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .sub-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease, filter 0.4s ease;
+  }
+  
+  .sub-image:hover {
+    transform: scale(1.1);
+    filter: brightness(0.7);
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  
+  .overlay.active {
+    opacity: 1;
+  }
+  
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    .long-image-container {
+      width: 100%;
+      height: 300px; /* Reduced height for mobile */
+    }
+  
+    .column-grid {
+      width: 100%;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+  
+    .sub-image-container {
+      height: 150px; /* Reduced height for mobile */
+    }
+  }

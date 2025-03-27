@@ -1,0 +1,137 @@
+/* Container for the product cards */
+.grouped-content {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  /* Product card container */
+  .products {
+    width: 250px; /* Adjust width as needed */
+    height: 400px; /* Long card */
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    margin: 10px;
+  }
+  
+  /* Hover effect for the product card */
+  .products:hover {
+    border: 2px solid #ff6f61; /* Border color on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    transform: scale(1.05); /* Slightly scale up the card */
+  }
+  
+  /* Image container */
+  .image_group {
+    position: relative;
+    width: 100%;
+    height: 70%; /* Adjust height as needed */
+    overflow: hidden;
+  }
+  
+  /* Main product image */
+  .image_group img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Hover effect for the image */
+  .products:hover .image_group img {
+    transform: scale(1.1); /* Zoom effect on hover */
+  }
+  
+  /* Overlay for the image */
+  .ImageOverlayCa {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Dark overlay */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  /* Show overlay on hover */
+  .products:hover .ImageOverlayCa {
+    opacity: 1;
+  }
+  
+  /* Icons container */
+  .product-button {
+    position: absolute;
+    bottom: 20px; /* Position at the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px; /* Space between icons */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  /* Show icons on hover */
+  .products:hover .product-button {
+    opacity: 1;
+  }
+  
+  /* Icons styling */
+  .product-button a,
+  .product-button button {
+    background: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  /* Hover effect for icons */
+  .product-button a:hover,
+  .product-button button:hover {
+    background: #ff6f61; /* Change background color on hover */
+  }
+  
+  /* Icon SVG styling */
+  .product-button svg {
+    width: 20px;
+    height: 20px;
+    fill: #333; /* Icon color */
+  }
+  
+  /* Product details */
+  .product-detail {
+    padding: 15px;
+    text-align: center;
+  }
+  
+  /* Product title */
+  .grid-link__title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #333;
+  }
+  
+  /* Product price */
+  .product_price {
+    font-size: 16px;
+    color: #ff6f61; /* Price color */
+  }
+  
+  /* Sale price */
+  .grid-link__sale_price {
+    font-size: 14px;
+    color: #888;
+    text-decoration: line-through;
+    margin-left: 5px;
+  }
+  

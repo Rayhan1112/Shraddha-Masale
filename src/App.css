@@ -1,38 +1,379 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Body Styles */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f8f8f8;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Logo Styles */
+.top-logo {
+  position: fixed; /* Fixed position to keep it in place */
+  top: 20px; /* Distance from the top */
+  left: 10vh; /* Distance from the left */
+  z-index: 1001; /* Ensure logo is above the header */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.top-logo img {
+  width: 20%; /* Adjust size as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+/* Header Styles */
+header {
+  background-color: rgba(255, 250, 250, 0.8); /* Semi-transparent background */
   color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 30px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Ensure header is above the image */
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; /* Smooth transition */
+  opacity: 1;
+  visibility: visible;
 }
 
-.App-link {
-  color: #61dafb;
+header.hidden {
+  opacity: 0;
+  visibility: hidden;
 }
 
-@keyframes App-logo-spin {
+header.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+header.sticky {
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  background-color: #ffffffd7; /* Solid background when sticky */
+}
+
+.logo img {
+  height: 100px;
+  margin: 0;
+  padding-left: 5vh;
+}
+
+/* Navigation Styles */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px; /* Increased gap for better spacing */
+  margin: 0;
+  padding: 0 4vh;
+}
+
+nav a {
+  color: #000; /* Default text color */
+  text-decoration: none;
+  padding: 10px 15px; /* Increased padding for better click area */
+  font-size: 16px;
+  font-weight: 500;
+  position: relative;
+  transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+}
+
+/* Hover Effect: Underline Animation */
+nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px; /* Position the underline below the text */
+  width: 0;
+  height: 2px;
+  background-color: #ff6f61; /* Hover underline color */
+  transition: width 0.3s ease-in-out; /* Smooth width transition */
+}
+
+nav a:hover::after {
+  width: 100%; /* Expand the underline on hover */
+}
+
+/* Active Link Style */
+nav a.active {
+  color: #ff6f61; /* Active link color */
+  font-weight: 600;
+}
+
+nav a.active::after {
+  width: 100%; /* Show full underline for active link */
+}
+
+/* Dropdown Menu Styles */
+nav ul .dropdown {
+  display: none;
+  position: absolute;
+  top: 100%; /* Position below the parent link */
+  left: 0;
+  background-color: #ffffff; /* Dropdown background color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 0;
+  z-index: 1000; /* Ensure dropdown is above other content */
+}
+
+nav ul .dropdown a {
+  color: #333; /* Dropdown link color */
+  padding: 10px 20px;
+  display: block;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+nav ul .dropdown a:hover {
+  background-color: #f8f8f8; /* Hover background color */
+  color: #ff6f61; /* Hover text color */
+}
+
+nav li:hover .dropdown {
+  display: block; /* Show dropdown on hover */
+}
+
+/* Add a subtle animation to dropdown */
+nav ul .dropdown {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(-10px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hamburger Menu Styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: #000; /* Hamburger icon color */
+  margin: 4px 0;
+  transition: all 0.3s ease-in-out; /* Smooth transition for animation */
+}
+
+.hamburger.active div:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px); /* Rotate first line */
+}
+
+.hamburger.active div:nth-child(2) {
+  opacity: 0; /* Hide middle line */
+}
+
+.hamburger.active div:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px); /* Rotate last line */
+}
+
+/* Mobile Menu Styles */
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: -250px; /* Start off-screen */
+  width: 250px;
+  height: 100vh;
+  background-color: #ffffff; /* Mobile menu background color */
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  padding: 20px;
+  transition: left 0.3s ease-in-out;
+  z-index: 1000; /* Ensure menu is on top */
+}
+
+.mobile-menu.active {
+  left: 0; /* Slide in */
+}
+
+.mobile-menu a {
+  color: #333; /* Mobile menu link color */
+  text-decoration: none;
+  padding: 10px 0;
+  font-size: 18px;
+  transition: color 0.3s ease-in-out; /* Smooth color transition */
+}
+
+.mobile-menu a:hover {
+  color: #ff6f61; /* Hover text color */
+}
+
+.mobile-menu a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  background-color: #ff6f61;
+  transition: width 0.3s ease-in-out;
+}
+
+.mobile-menu a:hover::after {
+  width: 100%;
+}
+
+.mobile-menu .close-btn {
+  align-self: flex-end;
+  cursor: pointer;
+  font-size: 24px;
+  color: #333; /* Close button color */
+  transition: color 0.3s ease-in-out; /* Smooth color transition */
+}
+
+.mobile-menu .close-btn:hover {
+  color: #ff6f61; /* Hover color */
+}
+
+/* Overlay for mobile menu */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  z-index: 999; /* Below menu but above other content */
+}
+
+.overlay.active {
+  display: block;
+}
+
+/* Main Section Styles */
+main {
+  position: relative;
+}
+
+.banner {
+  position: relative;
+  text-align: center;
+  overflow: hidden; /* Ensure the image doesn't overflow */
+}
+
+.banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Ensure the overlay is above the image but below the text */
+}
+
+.banner img {
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  object-fit: cover; /* Ensure the image covers the area */
+  position: relative; /* Ensure the image is below the overlay */
+  z-index: 0; /* Ensure the image is below the overlay */
+}
+
+.banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  z-index: 2; /* Ensure text is above the overlay */
+}
+
+.banner-text h2 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.banner-text p {
+  font-size: 24px;
+  margin: 5px 0;
+}
+
+/* Footer Styles */
+footer {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #333;
+  color: white;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Additional styles specific to the Waffy website */
+h1, h2, h3 {
+  text-transform: uppercase;
+}
+
+.banner-text span {
+  color: orange;
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header {
+    left: 1vh;
+    right: 1vh;
+  }
+
+  .banner-text h2 {
+    font-size: 28px;
+  }
+
+  .banner-text p {
+    font-size: 20px;
+  }
+
+  nav ul {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+  .top-logo img {
+    width: 100px; /* Adjust size as needed */
+    height: auto;
+  }
+
+  .banner img {
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    object-fit: cover; /* Ensure the image covers the area */
+  }
+
+  .logo h1 {
+    font-size: 20px;
+  }
+  .logo img {
+
+    padding-left: 0vh;
+  }
+  .search-cart {
+    display: none;
+  }
+
+  .banner-text {
+    width: 90%;
+    text-align: center;
   }
 }

@@ -1,0 +1,103 @@
+/* BestProduct.css */
+.best-product {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #f9f9f9; /* Light background for the section */
+    margin: 0 10vh;
+  }
+  
+  .best-product h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    font-family: 'Spicy Rice', cursive; /* Use Spicy Rice font for the heading */
+    color: #333; /* Dark text color */
+  }
+  
+  .product-card {
+    background: #fff;
+    border: 2px solid transparent; /* Transparent border by default */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    height: 400px; /* Make the card longer */
+    width: 200px; /* Fixed width for cards */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+  }
+  
+  .product-card:hover::before {
+    border-color: #e67e22; /* Orange border on hover */
+  }
+  
+  .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .product-image {
+    width: 100%;
+    height: 250px; /* Increase image height to match longer card */
+    object-fit: cover;
+  }
+  
+  .product-details {
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .product-name {
+    font-size: 1.2rem;
+    margin: 0 0 10px;
+    font-family: 'Arial', sans-serif; /* Simple sans-serif font for product names */
+    color: #444; /* Slightly darker text color */
+  }
+  
+  .product-price {
+    font-size: 1.1rem;
+    color: #e67e22; /* Orange color for price */
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  /* Swiper Navigation and Pagination Styles */
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: #e67e22; /* Orange color for navigation buttons */
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .swiper-button-next:hover,
+  .swiper-button-prev:hover {
+    transform: scale(1.1);
+  }
+  
+  .swiper-pagination-bullet {
+    background: #ccc; /* Light gray for pagination bullets */
+  }
+  
+  .swiper-pagination-bullet-active {
+    background: #e67e22; /* Orange color for active pagination bullet */
+  }

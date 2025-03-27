@@ -1,0 +1,48 @@
+/* ImageGridMobile.css */
+.image-grid-container {
+    max-width: 1200px;
+    margin: 10vh auto;
+    padding: 20px;
+  }
+  
+  .image-grid {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .long-image-container {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1; /* Square images on mobile */
+  }
+  
+  .column-grid {
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  
+  .sub-image-container {
+    height: auto;
+    aspect-ratio: 1 / 1; /* Square images on mobile */
+  }
+  
+  .content {
+    bottom: 5px;
+    right: 5px;
+    padding: 8px;
+    height: 45%;
+  }
+  
+  .content h4 {
+    font-size: 18px;
+  }
+  
+  .content p {
+    font-size: 14px;
+  }
+  
+  .shop-now-btn {
+    font-size: 14px;
+    padding: 8px 14px;
+  }
