@@ -69,7 +69,7 @@ const ContactForm = () => {
           <h2>Find Us</h2>
           <iframe
             title="Google Maps"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.4086585016257!2d73.87515977496383!3d18.555606082544752!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c0dd4e54e6f1%3A0x2d34bd0e5792430a!2sHari%20Ganga%20Society%2C%20Yerawada%2C%20Pune%2C%20Maharashtra%20411006!5e0!3m2!1sen!2sin!4v1742185787512!5m2!1sen!2sin" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30271.848402270847!2d73.77376487071757!3d18.48451753394976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bfcd3f188b95%3A0x39ee701b0b5d2531!2sWarje%2C%20Pune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1743139922600!5m2!1sen!2sin" 
             allowFullScreen
             loading="lazy"
           ></iframe>

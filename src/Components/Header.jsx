@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { Link as RouterLink, useNavigate, useLocation } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
 import logo from '../Assests/shradhhalogo.png';
 
-const Header = ({ isMenuOpen, toggleMenu }) => {
+const Header = ({ isMenuOpen, toggleMenu, showNavbar }) => {
   const [activeLink, setActiveLink] = useState("home");
   const [isHeaderVisible, setIsHeaderVisible] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   // Handle scroll event to show/hide header
   useEffect(() => {
@@ -20,97 +23,79 @@ const Header = ({ isMenuOpen, toggleMenu }) => {
   const handleLinkClick = (section) => {
     setActiveLink(section);
     if (window.innerWidth < 768 && isMenuOpen) {
-      toggleMenu(); // Close mobile menu only if open
+      toggleMenu();
     }
   };
 
+  // Handle navigation based on current path
+  const handleNavigation = (section) => {
+    handleLinkClick(section);
+    
+    // If we're on a product page, navigate to home first
+    if (location.pathname.includes('/product/')) {
+      navigate('/home', { state: { scrollTo: section } });
+    }
+  };
+
+  // Navigation link component factory
+  const NavLink = ({ to, children, section }) => {
+    if (location.pathname.includes('/product/')) {
+      return (
+        <RouterLink 
+          to="/home"
+          className={activeLink === section ? "active" : ""}
+          onClick={() => handleNavigation(section)}
+        >
+          {children}
+        </RouterLink>
+      );
+    }
+    return (
+      <ScrollLink
+        to={to}
+        smooth={true}
+        duration={500}
+        offset={-70}
+        className={activeLink === section ? "active" : ""}
+        onSetActive={() => setActiveLink(section)}
+        onClick={() => handleLinkClick(section)}
+      >
+        {children}
+      </ScrollLink>
+    );
+  };
+
   return (
-    <header id="navbar" className={isHeaderVisible ? "visible" : "hidden"}>
+    <header 
+      id="navbar" 
+      className={`${isHeaderVisible || location.pathname.includes('/product/') ? "visible" : "hidden"} ${isMenuOpen ? "menu-open" : ""}`}
+    >
       <div className="logo">
-        <img src={logo} alt="Logo" />
+        <RouterLink to="/home">
+          <img src={logo} alt="Logo" />
+        </RouterLink>
       </div>
 
       {/* Navigation Menu */}
       <nav className={isMenuOpen ? "nav-menu open" : "nav-menu"}>
         <ul>
           <li>
-            <ScrollLink
-              to="home"
-              smooth={true}
-              duration={500}
-              offset={-70}
-              className={activeLink === "home" ? "active" : ""}
-              onSetActive={() => setActiveLink("home")}
-              onClick={() => handleLinkClick("home")}
-            >
-              Home
-            </ScrollLink>
+            <NavLink to="home" section="home">Home</NavLink>
           </li>
           <li>
-            <ScrollLink
-              to="hproduct"
-              smooth={true}
-              duration={500}
-              offset={-70}
-              className={activeLink === "hproduct" ? "active" : ""}
-              onSetActive={() => setActiveLink("hproduct")}
-              onClick={() => handleLinkClick("hproduct")}
-            >
-              Hero Product
-            </ScrollLink>
+            <NavLink to="hproduct" section="hproduct">Hero Product</NavLink>
           </li>
           <li>
-            <ScrollLink
-              to="products"
-              smooth={true}
-              duration={500}
-              offset={-70}
-              className={activeLink === "products" ? "active" : ""}
-              onSetActive={() => setActiveLink("products")}
-              onClick={() => handleLinkClick("products")}
-            >
-              Products
-            </ScrollLink>
+            <NavLink to="products" section="products">Products</NavLink>
           </li>
           <li>
-            <ScrollLink
-              to="about"
-              smooth={true}
-              duration={500}
-              offset={-70}
-              className={activeLink === "about" ? "active" : ""}
-              onSetActive={() => setActiveLink("about")}
-              onClick={() => handleLinkClick("about")}
-            >
-              About
-            </ScrollLink>
-          </li>
-          
-          <li>
-            <ScrollLink
-              to="founder"
-              smooth={true}
-              duration={500}
-              offset={-70}
-              className={activeLink === "founder" ? "active" : ""}
-              onSetActive={() => setActiveLink("founder")}
-              onClick={() => handleLinkClick("founder")}
-            >
-              Founders
-            </ScrollLink>
+            <NavLink to="about" section="about">About</NavLink>
           </li>
           <li>
-            <ScrollLink
-              to="contact"
-              smooth={true}
-              duration={500}
-              offset={-70}
-              className={activeLink === "contact" ? "active" : ""}
-              onSetActive={() => setActiveLink("contact")}
-              onClick={() => handleLinkClick("contact")}
-            >
-              Contact us
-            </ScrollLink>
+            <NavLink to="founder" section="founder">Founders</NavLink>
+          </li>
+          <li>
+            <NavLink to="contact" section="contact">Contact us</NavLink>
           </li>
         </ul>
       </nav>

@@ -1,26 +1,56 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
+import { Link as RouterLink } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
-import '../Components/css/MobileView.css'
+import '../Components/css/MobileView.css';
 
-const MobileMenu = ({ isMenuOpen, toggleMenu }) => {
-    const [activeLink, setActiveLink] = useState("home");
-    const [isHeaderVisible, setIsHeaderVisible] = useState(false);
+const MobileMenu = ({ isMenuOpen, toggleMenu, currentPath }) => {
+  const [activeLink, setActiveLink] = useState("home");
+  const [isHeaderVisible, setIsHeaderVisible] = useState(false);
 
-      // Handle scroll event to show/hide header
-      useEffect(() => {
-        const handleScroll = () => {
-          setIsHeaderVisible(window.scrollY > 50);
-        };
-    
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-      }, []);
-      // Close menu only on mobile when clicking a link
+  // Handle scroll event to show/hide header
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsHeaderVisible(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Close menu only on mobile when clicking a link
   const handleLinkClick = (section) => {
     setActiveLink(section);
     if (window.innerWidth < 768 && isMenuOpen) {
-      toggleMenu(); // Close mobile menu only if open
+      toggleMenu();
     }
+  };
+
+  // Navigation link component factory
+  const NavLink = ({ to, children, section }) => {
+    if (currentPath === "/product") {
+      return (
+        <RouterLink 
+          to={`/home#${to}`}
+          className={activeLink === section ? "active" : ""}
+          onClick={() => handleLinkClick(section)}
+        >
+          {children}
+        </RouterLink>
+      );
+    }
+    return (
+      <ScrollLink
+        to={to}
+        smooth={true}
+        duration={500}
+        offset={-70}
+        className={activeLink === section ? "active" : ""}
+        onSetActive={() => setActiveLink(section)}
+        onClick={() => handleLinkClick(section)}
+      >
+        {children}
+      </ScrollLink>
+    );
   };
 
   return (
@@ -28,87 +58,26 @@ const MobileMenu = ({ isMenuOpen, toggleMenu }) => {
       <div className="close-btn" onClick={toggleMenu}>
         ×
       </div>
-     <ul>
-               <li>
-                 <ScrollLink
-                   to="home"
-                   smooth={true}
-                   duration={500}
-                   offset={-70}
-                   className={activeLink === "home" ? "active" : ""}
-                   onSetActive={() => setActiveLink("home")}
-                   onClick={() => handleLinkClick("home")}
-                 >
-                   Home
-                 </ScrollLink>
-               </li>
-               <li>
-                 <ScrollLink
-                   to="hproduct"
-                   smooth={true}
-                   duration={500}
-                   offset={-70}
-                   className={activeLink === "hproduct" ? "active" : ""}
-                   onSetActive={() => setActiveLink("hproduct")}
-                   onClick={() => handleLinkClick("hproduct")}
-                 >
-                   Hero Product
-                 </ScrollLink>
-               </li>
-               <li>
-                 <ScrollLink
-                   to="products"
-                   smooth={true}
-                   duration={500}
-                   offset={-70}
-                   className={activeLink === "products" ? "active" : ""}
-                   onSetActive={() => setActiveLink("products")}
-                   onClick={() => handleLinkClick("products")}
-                 >
-                   Products
-                 </ScrollLink>
-               </li>
-               <li>
-                 <ScrollLink
-                   to="about"
-                   smooth={true}
-                   duration={500}
-                   offset={-70}
-                   className={activeLink === "about" ? "active" : ""}
-                   onSetActive={() => setActiveLink("about")}
-                   onClick={() => handleLinkClick("about")}
-                 >
-                   About
-                 </ScrollLink>
-               </li>
-               
-               <li>
-                 <ScrollLink
-                   to="founder"
-                   smooth={true}
-                   duration={500}
-                   offset={-70}
-                   className={activeLink === "founder" ? "active" : ""}
-                   onSetActive={() => setActiveLink("founder")}
-                   onClick={() => handleLinkClick("founder")}
-                 >
-                   Founders
-                 </ScrollLink>
-               </li>
-               <li>
-                 <ScrollLink
-                   to="contact"
-                   smooth={true}
-                   duration={500}
-                   offset={-70}
-                   className={activeLink === "contact" ? "active" : ""}
-                   onSetActive={() => setActiveLink("contact")}
-                   onClick={() => handleLinkClick("contact")}
-                 >
-                   Contact us
-                 </ScrollLink>
-               </li>
-             </ul>
+      <ul>
+        <li>
+          <NavLink to="home" section="home">Home</NavLink>
+        </li>
+        <li>
+          <NavLink to="hproduct" section="hproduct">Hero Product</NavLink>
+        </li>
+        <li>
+          <NavLink to="products" section="products">Products</NavLink>
+        </li>
+        <li>
+          <NavLink to="about" section="about">About</NavLink>
+        </li>
+        <li>
+          <NavLink to="founder" section="founder">Founders</NavLink>
+        </li>
+        <li>
+          <NavLink to="contact" section="contact">Contact us</NavLink>
+        </li>
+      </ul>
     </div>
   );
 };

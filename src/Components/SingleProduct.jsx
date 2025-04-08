@@ -78,15 +78,15 @@ export default function SingleProduct() {
           transition={{ duration: 1.4, ease: "easeInOut", delay: 0.2 }}
         >
           <h2 className="product-title">
-            Our Hero Product - Bibba Godambi Spice (बिब्बा गोडम्बी मसाला)
+            Our Hero Product - Bibba Godambi Gravy Spice (बिब्बा गोडंबी ग्रेव्ही मसाला)
           </h2>
           <p className="product-description">
-            Bimba Godambi Spice is the heart of Hetika, a blend deeply rooted in Ayurvedic wisdom and
+          Bibba Godambi Spice is the heart of Hetika, a blend deeply rooted in Ayurvedic wisdom and
             packed with over 20 proven health benefits. This unique spice not only enhances the richness
             of gravies but also promotes digestion, boosts immunity, and adds an unmatched depth of flavor
             to any dish.
           </p>
-          <h3 className="product-tagline">Why Bimba Godambi Masala?</h3>
+          <h3 className="product-tagline">Why Bibba Godambi Masala?</h3>
           <ul className="product-benefits">
             <li>Ayurvedic formulation with 20+ health benefits</li>
             <li>Enhances taste while supporting digestive health</li>

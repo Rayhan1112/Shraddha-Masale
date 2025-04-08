@@ -1,0 +1,98 @@
+/* Animation.css */
+.app-container {
+    position: relative;
+    height: 100vh;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+  }
+  
+  .landing-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    z-index: 1000;
+    pointer-events: none;
+  }
+  
+  .company-name {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: bold;
+    color: white;
+    position: relative;
+    text-align: center;
+  }
+  
+  .p-circle {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    color: black;
+    transform-origin: center center;
+    margin: 0 0.1em;
+  }
+  
+  .main-content {
+    position: relative;
+    background: white;
+    z-index: 900;
+    padding-top: 100vh;
+  }
+  
+  .hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: #f8f9fa;
+    padding: 2rem 0;
+  }
+  
+  .portfolio-section {
+    padding: 4rem 0;
+    background: white;
+  }
+  
+  .portfolio-item {
+    margin-bottom: 2rem;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .portfolio-item img {
+    transition: transform 0.3s ease;
+  }
+  
+  .portfolio-item:hover img {
+    transform: scale(1.03);
+  }
+  
+  .about-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+  
+  .footer {
+    padding: 2rem 0;
+    background: #343a40;
+    color: white;
+    text-align: center;
+  }
+  
+  @media (max-width: 768px) {
+    .company-name {
+      font-size: 3rem;
+    }
+    
+    .portfolio-section, .about-section {
+      padding: 2rem 0;
+    }
+  }
